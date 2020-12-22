@@ -23,10 +23,6 @@ export default function Categories() {
   const categories = useSelector(selectCategories);
   const [showMenu, setShowMenu] = useState(false);
 
-  useEffect(() => {
-    console.log("Categories categories", categories);
-  }, [categories]);
-
   return (
     <nav className={`Categories ${showMenu ? "is-menu-open" : ""}`}>
       <button
@@ -42,7 +38,6 @@ export default function Categories() {
               key={index}
               className="Categories__item"
               onClick={(e) => {
-                console.log("clicked");
                 dispatch(toggleCategory(category.id));
               }}
             >

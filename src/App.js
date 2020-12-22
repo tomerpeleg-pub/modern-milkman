@@ -50,21 +50,11 @@ function App() {
         }))
       )
       .then((categories) => {
-        console.log("got categories", categories);
         dispatch(setCategories(categories));
         dispatch(setLoading(false));
-        console.log("set categories??");
         dispatch(toggleCategory(categories[0].id));
       });
   }, []);
-
-  useEffect(() => {
-    console.log("App categories", categories);
-  }, [categories]);
-
-  useEffect(() => {
-    console.log("App loading", isLoading);
-  }, [isLoading]);
 
   return (
     <div className="App">

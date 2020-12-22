@@ -7,7 +7,8 @@ const getProducts = (state) =>
   state.categories
     .filter((category) => category.selected)
     .map((category) => category.data)
-    .flat();
+    .flat()
+    .sort((a, b) => (a.price < b.price ? -1 : 1));
 
 export const categoriesSlice = createSlice({
   name: "categories",
@@ -19,7 +20,6 @@ export const categoriesSlice = createSlice({
   },
   reducers: {
     setCategories: (state, action) => {
-      console.log("updating state", state, action);
       state.categories = action.payload;
     },
     setLoading: (state, action) => {

@@ -34,17 +34,19 @@ export default function Products() {
   const categories = useSelector(selectCategories);
   const products = useSelector(selectProducts);
 
-  useEffect(() => {
-    console.log("Products products", products);
-  }, [products]);
-
   return (
-    <div className="Products">
-      {!!products.length === false && (
-        <p>Please select at least a category message.</p>
-      )}
-      {products.map &&
-        products.map((product, index) => <Product {...product} key={index} />)}
+    <div>
+      {products.length > 0 && <p>Products: {products.length}</p>}
+
+      <div className="Products">
+        {!!products.length === false && (
+          <p>Please select at least a category message.</p>
+        )}
+        {products.map &&
+          products.map((product, index) => (
+            <Product {...product} key={index} />
+          ))}
+      </div>
     </div>
   );
 }
